@@ -1,6 +1,6 @@
-// hostmeta-test.js
+// hostmeta-json-test.js
 //
-// Test the module interface
+// Test host-meta.json support 
 //
 // Copyright 2012, StatusNet Inc.
 //
