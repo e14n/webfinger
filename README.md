@@ -55,4 +55,20 @@ webfinger or a hostname, call this and we'll do it for you. Same
 
 ## Testing
 
-The tests set up servers on ports 80 and 443
+The tests set up servers that listen on ports 80 and 443. On most
+Unix-like systems, you have to be root to listen on ports below 1024 or whatever.
+
+So, to run the unit tests, you have to go:
+
+    sudo npm test
+
+It's probably not a good idea to sudo any script without thinking
+about it pretty hard. I suggest that if you're doing development, you
+do it in a virtual machine so you're not sudo'ing dangerous stuff on
+your main computer.
+
+# Bugs
+
+Bugs welcome, see:
+
+ https://github.com/evanp/webfinger/issues
