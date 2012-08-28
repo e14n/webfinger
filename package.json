@@ -26,11 +26,12 @@
     },
 
     "devDependencies": {
-        "vows": "0.6.x"
+        "vows": "0.6.x",
+        "express": "3.0.x"
     },
 
     "dependencies": {
-        "async": "0.1.x",
+        "step": "0.0.x",
         "xml2js": "0.1.x"
     },
 
