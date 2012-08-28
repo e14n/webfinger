@@ -1,0 +1,49 @@
+{
+    "name": "webfinger",
+
+    "description": "Client library for Host Meta (RFC 6415) and Webfinger",
+
+    "homepage": "http://github.com/evanp/webfinger",
+
+    "version": "0.1.0",
+
+    "keywords": ["webfinger", "hostmeta", "discovery", "xrd", "jrd", "lrdd"],
+
+    "engines": {
+        "node": "0.8.x"
+    },
+
+    "author": "Evan Prodromou <evan@status.net>",
+
+    "scripts": {
+        "test": "vows test/*-test.js"
+    },
+
+    "main": "./lib/index.js",
+
+    "directories": {
+        "lib": "./lib/"
+    },
+
+    "devDependencies": {
+        "vows": "0.6.x"
+    },
+
+    "dependencies": {
+        "async": "0.1.x",
+        "xml2js": "0.1.x"
+    },
+
+    "repository": {
+        "type":  "git",
+        "url": "git://github.com/evanp/activitypump.git"
+    },
+
+    "licenses": [
+        {
+            "type": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    ]
+
+}
