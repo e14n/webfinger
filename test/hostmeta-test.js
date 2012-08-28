@@ -46,6 +46,11 @@ suite.addBatch({
         "it works": function(err, app) {
             assert.ifError(err);
         },
+        teardown: function(app) {
+            if (app && app.close) {
+                app.close();
+            }
+        },
         "and we get its host-meta data": {
             topic: function() {
                 wf.hostmeta("localhost", this.callback);
@@ -64,9 +69,9 @@ suite.addBatch({
                 assert.include(jrd.links[0], "rel");
                 assert.equal(jrd.links[0].rel, "lrdd");
                 assert.include(jrd.links[0], "type");
-                assert.equal(jrd.links[0].rel, "application/xrd+xml");
+                assert.equal(jrd.links[0].type, "application/xrd+xml");
                 assert.include(jrd.links[0], "template");
-                assert.equal(jrd.links[0].rel, "http://localhost/lrdd?uri={uri}");
+                assert.equal(jrd.links[0].template, "http://localhost/lrdd?uri={uri}");
             }
         }
     }
