@@ -49,7 +49,7 @@ Gets link data for the host at `address` and returns it to function `callback`.
 Gets link data for `address` and returns it to function `callback`.
 
 If you've got an address and you don't want to bother figuring out if it's a 
-webfinger or a hostname, call this and we'll do it for you. Same 
+webfinger or a hostname, call this and we'll do it for you.
 
 `callback` works just like with `webfinger()`.
 
