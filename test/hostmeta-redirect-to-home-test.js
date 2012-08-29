@@ -22,7 +22,7 @@ var Step = require("step"),
     express = require("express"),
     http = require("http"),
     https = require("https"),
-    wf = require("../lib/index"),
+    wf = require("../lib/webfinger"),
     fs = require("fs"),
     path = require("path");
 

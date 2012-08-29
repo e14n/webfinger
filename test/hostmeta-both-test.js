@@ -19,7 +19,7 @@
 var assert = require("assert"),
     vows = require("vows"),
     express = require("express"),
-    wf = require("../lib/index");
+    wf = require("../lib/webfinger");
 
 var suite = vows.describe("RFC6415 (host-meta) interface");
 

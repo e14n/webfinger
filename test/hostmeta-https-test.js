@@ -20,7 +20,7 @@ var assert = require("assert"),
     vows = require("vows"),
     express = require("express"),
     https = require("https"),
-    wf = require("../lib/index"),
+    wf = require("../lib/webfinger"),
     fs = require("fs"),
     path = require("path");
 

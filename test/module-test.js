@@ -24,7 +24,7 @@ var suite = vows.describe("Webfinger module interface");
 suite.addBatch({
     "When we get the app module": {
         topic: function() { 
-            return require("../lib/index");
+            return require("../lib/webfinger");
         },
         "there is one": function(mod) {
             assert.isObject(mod);
