@@ -1,6 +1,6 @@
-// hostmeta-test.js
+// hostmeta-https-test.js
 //
-// Test the module interface
+// Test finding hostmeta by https
 //
 // Copyright 2012, StatusNet Inc.
 //
