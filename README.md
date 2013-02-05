@@ -38,6 +38,17 @@ for a JRD representation of the Webfinger data.
 Note that the data is returned in JRD format even if it's in XRD
 format on the server.
 
+### webfinger(address, rel, callback)
+
+Gets link data for the address `address` and with link relation type
+`rel` and returns it to function `callback`.
+
+`callback` should take two arguments: `err` for an error, and `jrd`
+for a JRD representation of the Webfinger data.
+
+Note that the data is returned in JRD format even if it's in XRD
+format on the server.
+
 ### hostmeta(address, callback)
 
 Gets link data for the host at `address` and returns it to function `callback`.
