@@ -9,6 +9,7 @@ It supports:
 * host-meta
 * host-meta.json
 * http and https
+* RFC 6415 and the upcoming Webfinger RFC (up to draft 09)
 
 ## License
 
@@ -38,22 +39,46 @@ for a JRD representation of the Webfinger data.
 Note that the data is returned in JRD format even if it's in XRD
 format on the server.
 
+This method will first try the `/.well-known/webfinger` endpoint; if
+that doesn't work it will fall back to RFC 6415 discovery.
+
 ### webfinger(address, rel, callback)
 
-Gets link data for the address `address` and with link relation type
-`rel` and returns it to function `callback`.
+As above, but passes the `rel` parameter to the
+`/.well-known/webfinger` endpoint if it's truthy.
 
-`callback` should take two arguments: `err` for an error, and `jrd`
-for a JRD representation of the Webfinger data.
+This is mostly advisory. Some servers will send all links back
+anyways; others don't support the webfinger endpoint, so when we
+fallback to RFC 6415 everything is returned.
 
-Note that the data is returned in JRD format even if it's in XRD
-format on the server.
+Even if you pass a `rel` argument, you should still filter the
+results. (But future versions of this library may do it for you.)
+
+### webfinger(address, rel, options, callback)
+
+As above, but you can use the `options` object to control
+behaviour. Currently, the options are:
+
+* `httpsOnly`: boolean flag, default `false` for whether to only use
+  HTTPS for communicating with the server. When this is set, it won't
+  use Webfinger, host-meta or LRDD endpoints that aren't HTTPS, and won't
+  follow redirect requests to HTTP endpoints.
 
 ### hostmeta(address, callback)
 
 Gets link data for the host at `address` and returns it to function `callback`.
 
 `callback` works just like with `webfinger()`.
+
+### hostmeta(address, options, callback)
+
+As above, but you can use the `options` object to control
+behaviour. Currently, the options are:
+
+* `httpsOnly`: boolean flag, default `false`, for whether to only use
+  HTTPS for communicating with the server. When this is set, it won't
+  use host-meta or host-meta.json endpoints that aren't HTTPS, and won't
+  follow redirect requests to HTTP endpoints.
 
 ### discover(address, callback)
 
