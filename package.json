@@ -26,13 +26,13 @@
     },
 
     "devDependencies": {
-        "vows": "0.6.x",
+        "vows": "0.7.x",
         "express": "3.0.x"
     },
 
     "dependencies": {
         "step": "0.0.x",
-        "xml2js": "0.1.x"
+        "xml2js": "0.2.x"
     },
 
     "repository": {
@@ -46,5 +46,5 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     ]
-
 }
+
