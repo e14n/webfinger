@@ -5,12 +5,12 @@
 
     "homepage": "http://github.com/evanp/webfinger",
 
-    "version": "0.3.0",
+    "version": "0.3.1",
 
     "keywords": ["webfinger", "hostmeta", "discovery", "xrd", "jrd", "lrdd"],
 
     "engines": {
-        "node": "0.8.x"
+        "node": ">= 0.8.0"
     },
 
     "author": "Evan Prodromou <evan@status.net>",
