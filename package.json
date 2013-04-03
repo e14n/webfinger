@@ -3,9 +3,9 @@
 
     "description": "Client library for Host Meta (RFC 6415) and Webfinger",
 
-    "homepage": "http://github.com/evanp/webfinger",
+    "homepage": "http://github.com/e14n/webfinger",
 
-    "version": "0.3.0",
+    "version": "0.3.1",
 
     "keywords": ["webfinger", "hostmeta", "discovery", "xrd", "jrd", "lrdd"],
 
@@ -13,7 +13,7 @@
         "node": ">=0.8.x"
     },
 
-    "author": "Evan Prodromou <evan@status.net>",
+    "author": "Evan Prodromou <evan@e14n.com>",
 
     "scripts": {
         "test": "vows -i test/*-test.js"
@@ -37,7 +37,7 @@
 
     "repository": {
         "type":  "git",
-        "url": "git://github.com/evanp/webfinger.git"
+        "url": "git://github.com/e14n/webfinger.git"
     },
 
     "licenses": [
