@@ -13,7 +13,7 @@ It supports:
 
 ## License
 
-Copyright 2012,2013 StatusNet Inc.
+Copyright 2012,2013 E14N https://e14n.com/
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -107,4 +107,4 @@ your main computer.
 
 Bugs welcome, see:
 
- https://github.com/evanp/webfinger/issues
+ https://github.com/e14n/webfinger/issues
