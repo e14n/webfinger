@@ -10,7 +10,7 @@
     "keywords": ["webfinger", "hostmeta", "discovery", "xrd", "jrd", "lrdd"],
 
     "engines": {
-        "node": "0.8.x"
+        "node": ">=0.8.x"
     },
 
     "author": "Evan Prodromou <evan@status.net>",
@@ -26,7 +26,7 @@
     },
 
     "devDependencies": {
-        "vows": "0.6.x",
+        "vows": "0.7.x",
         "express": "3.0.x"
     },
 
