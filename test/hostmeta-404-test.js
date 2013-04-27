@@ -1,6 +1,6 @@
-// hostmeta-test.js
+// hostmeta-404-test.js
 //
-// Test the module interface
+// Test webfinger when the hostmeta endpoint is missing
 //
 // Copyright 2012, E14N https://e14n/
 //
@@ -21,7 +21,7 @@ var assert = require("assert"),
     express = require("express"),
     wf = require("../lib/webfinger");
 
-var suite = vows.describe("Test hostmeta missing");
+var suite = vows.describe("Test missing hostmeta endpoint");
 
 suite.addBatch({
     "When we run an HTTP app that does not support host-meta": {
