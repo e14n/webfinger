@@ -24,6 +24,8 @@ var assert = require("assert"),
     fs = require("fs"),
     path = require("path");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 var suite = vows.describe("RFC6415 (host-meta) interface");
 
 suite.addBatch({
