@@ -16,7 +16,7 @@
     "author": "Evan Prodromou <evan@status.net>",
 
     "scripts": {
-        "test": "vows -i test/*-test.js"
+        "test": "sudo vows -i test/*-test.js"
     },
 
     "main": "./lib/webfinger.js",
