@@ -5,7 +5,7 @@
 
     "homepage": "http://github.com/evanp/webfinger",
 
-    "version": "0.3.1",
+    "version": "0.3.2",
 
     "keywords": ["webfinger", "hostmeta", "discovery", "xrd", "jrd", "lrdd"],
 
