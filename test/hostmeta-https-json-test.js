@@ -2,7 +2,7 @@
 //
 // Test the module interface
 //
-// Copyright 2012, E14N https://e14n/
+// Copyright 2012-2013, E14N https://e14n/
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ var assert = require("assert"),
     path = require("path");
 
 var suite = vows.describe("RFC6415 (host-meta) interface");
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 suite.addBatch({
     "When we run an HTTPS app that just supports host-meta with JRD": {

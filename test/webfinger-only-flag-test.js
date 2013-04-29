@@ -2,7 +2,7 @@
 //
 // Test discovery just using Webfinger without host-meta
 //
-// Copyright 2012, E14N https://e14n/
+// Copyright 2012, StatusNet Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -71,9 +71,9 @@ suite.addBatch({
                 app.close();
             }
         },
-        "and we get a Webfinger": {
+        "and we get a Webfinger with the webfingerOnly flag": {
             topic: function() {
-                wf.webfinger("alice@localhost", this.callback);
+                wf.webfinger("alice@localhost", null, {webfingerOnly: true}, this.callback);
             },
             "it works": function(err, jrd) {
                 assert.ifError(err);

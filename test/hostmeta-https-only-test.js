@@ -21,6 +21,8 @@ var assert = require("assert"),
     express = require("express"),
     wf = require("../lib/webfinger");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 var suite = vows.describe("Flag to prevent falling back to http");
 
 suite.addBatch({

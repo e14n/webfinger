@@ -25,6 +25,8 @@ var Step = require("step"),
     express = require("express"),
     wf = require("../lib/webfinger");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 var suite = vows.describe("hostmeta shouldn't redirect to http if https-only flag set");
 
 suite.addBatch({

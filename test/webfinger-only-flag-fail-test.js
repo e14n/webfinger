@@ -1,8 +1,8 @@
-// hostmeta-https-test.js
+// hostmeta-test.js
 //
-// Test finding hostmeta by https
+// Test the module interface
 //
-// Copyright 2012, E14N https://e14n/
+// Copyright 2012, StatusNet Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,31 +19,27 @@
 var assert = require("assert"),
     vows = require("vows"),
     express = require("express"),
-    https = require("https"),
-    wf = require("../lib/webfinger"),
-    fs = require("fs"),
-    path = require("path");
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    wf = require("../lib/webfinger");
 
 var suite = vows.describe("RFC6415 (host-meta) interface");
 
 suite.addBatch({
-    "When we run an HTTPS app that just supports host-meta with XRD": {
+    "When we run an HTTP app that just supports host-meta with XRD": {
         topic: function() {
             var app = express(),
-                opts,
                 callback = this.callback;
+
+            // parse queries
+            app.use(express.query());
 
             app.get("/.well-known/host-meta", function(req, res) {
                 res.status(200);
                 res.set("Content-Type", "application/xrd+xml");
                 res.end("<?xml version='1.0' encoding='UTF-8'?>\n"+
                         "<XRD xmlns='http://docs.oasis-open.org/ns/xri/xrd-1.0'>\n" +
-                        "<Link rel='lrdd' type='application/xrd+xml' template='https://localhost/lrdd?uri={uri}' />"+
+                        "<Link rel='lrdd' type='application/xrd+xml' template='http://localhost/lrdd?uri={uri}' />"+
                         "</XRD>");
             });
-
             app.get("/lrdd", function(req, res) {
                 var uri = req.query.uri,
                     parts = uri.split("@"),
@@ -55,18 +51,13 @@ suite.addBatch({
                 res.end("<?xml version='1.0' encoding='UTF-8'?>\n"+
                         "<XRD xmlns='http://docs.oasis-open.org/ns/xri/xrd-1.0'>\n" +
                         "<Subject>"+uri+"</Subject>"+
-                        "<Link rel='profile' href='https://localhost/profile/"+username+"' />"+
+                        "<Link rel='profile' href='http://localhost/profile/"+username+"' />"+
                         "</XRD>");
             });
-
             app.on("error", function(err) {
                 callback(err, null);
             });
-            
-            opts = {key: fs.readFileSync(path.join(__dirname, "data", "localhost.key")),
-                    cert: fs.readFileSync(path.join(__dirname, "data", "localhost.crt"))};
-
-            https.createServer(opts, app).listen(443, function() {
+            app.listen(80, function() {
                 callback(null, app);
             });
         },
@@ -78,25 +69,19 @@ suite.addBatch({
                 app.close();
             }
         },
-        "and we get a Webfinger": {
+        "and we get a webfinger with the webfingerOnly flag set": {
             topic: function() {
-                wf.webfinger("alice@localhost", this.callback);
+                var callback = this.callback;
+                wf.webfinger("alice@localhost", null, {webfingerOnly: true}, function(err, jrd) {
+                    if (err) {
+                        callback(null);
+                    } else {
+                        callback(new Error("Unexpected success"));
+                    }
+                });
             },
-            "it works": function(err, jrd) {
+            "it fails correctly": function(err) {
                 assert.ifError(err);
-                assert.isObject(jrd);
-            },
-            "it has the link": function(err, jrd) {
-                assert.ifError(err);
-                assert.isObject(jrd);
-                assert.include(jrd, "links");
-                assert.isArray(jrd.links);
-                assert.lengthOf(jrd.links, 1);
-                assert.isObject(jrd.links[0]);
-                assert.include(jrd.links[0], "rel");
-                assert.equal(jrd.links[0].rel, "profile");
-                assert.include(jrd.links[0], "href");
-                assert.equal(jrd.links[0].href, "https://localhost/profile/alice");
             }
         }
     }

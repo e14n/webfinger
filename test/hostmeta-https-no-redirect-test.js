@@ -27,6 +27,8 @@ var Step = require("step"),
 
 var suite = vows.describe("hostmeta shouldn't redirect to http if https-only flag set");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 suite.addBatch({
     "When we run an HTTPS app that redirects to an HTTP app for hostmeta": {
         topic: function() {

@@ -25,7 +25,9 @@ var Step = require("step"),
     fs = require("fs"),
     path = require("path");
 
-var suite = vows.describe("RFC6415 (host-meta) interface");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+var suite = vows.describe("Webfinger should not redirect to HTTP");
 
 suite.addBatch({
     "When we run an HTTPS app that redirects to HTTP for Webfinger": {

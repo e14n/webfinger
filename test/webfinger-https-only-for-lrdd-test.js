@@ -25,7 +25,9 @@ var Step = require("step"),
     express = require("express"),
     wf = require("../lib/webfinger");
 
-var suite = vows.describe("webfinger httpsOnly flag causes error");
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+var suite = vows.describe("webfinger httpsOnly flag disallows redirect to HTTP-only LRDD");
 
 suite.addBatch({
     "When we run an HTTPS app that uses an HTTP app for LRDD": {
