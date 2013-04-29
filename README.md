@@ -63,6 +63,9 @@ behaviour. Currently, the options are:
   HTTPS for communicating with the server. When this is set, it won't
   use Webfinger, host-meta or LRDD endpoints that aren't HTTPS, and won't
   follow redirect requests to HTTP endpoints.
+* `webfingerOnly`: boolean flag, default `false` for whether to only use
+  the .well-known/webfinger endpoint. When this is set, it won't
+  use host-meta and LRDD endpoints as a fallback.
 
 ### hostmeta(address, callback)
 
