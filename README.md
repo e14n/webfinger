@@ -33,6 +33,9 @@ limitations under the License.
 
 Gets link data for the address `address` and returns it to function `callback`.
 
+The `address` argument can be any kind of URL that node.js recognizes;
+acct: and http: and https: URLs are the most likely to work.
+
 `callback` should take two arguments: `err` for an error, and `jrd`
 for a JRD representation of the Webfinger data.
 
