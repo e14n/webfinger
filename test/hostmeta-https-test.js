@@ -24,7 +24,9 @@ var assert = require("assert"),
     fs = require("fs"),
     path = require("path");
 
-var suite = vows.describe("RFC6415 (host-meta) interface");
+var suite = vows.describe("RFC6415 (host-meta) interface over https with XRD only");
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 suite.addBatch({
     "When we run an HTTPS app that just supports host-meta with XRD": {
