@@ -32,7 +32,7 @@
 
     "dependencies": {
         "step": "0.0.x",
-        "xml2js": "0.2.x"
+        "xml2js": "0.1.x"
     },
 
     "repository": {
