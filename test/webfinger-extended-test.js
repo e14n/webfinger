@@ -46,6 +46,10 @@ suite.addBatch({
                     username = parts[0],
                     hostname = parts[1];
 
+                if (username.substr(0, 5) == "acct:") {
+                    username = username.substr(5);
+                }
+
                 res.status(200);
                 res.set("Content-Type", "application/xrd+xml");
                 res.end("<?xml version='1.0' encoding='UTF-8'?>\n"+
@@ -85,9 +89,6 @@ suite.addBatch({
             "it has the links": function(err, jrd) {
                 assert.ifError(err);
                 assert.isObject(jrd);
-                assert.include(jrd, "subject");
-                assert.isString(jrd.subject);
-                assert.equal(jrd.subject, "alice@localhost");
                 assert.include(jrd, "links");
                 assert.isArray(jrd.links);
                 assert.lengthOf(jrd.links, 2);
@@ -113,7 +114,7 @@ suite.addBatch({
                 assert.isObject(jrd);
                 assert.include(jrd, "subject");
                 assert.isString(jrd.subject);
-                assert.equal(jrd.subject, "alice@localhost");
+                assert.equal(jrd.subject, "acct:alice@localhost");
             },
             "it has the alias": function(err, jrd) {
                 assert.ifError(err);

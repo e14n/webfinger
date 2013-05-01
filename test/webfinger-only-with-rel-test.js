@@ -46,6 +46,10 @@ suite.addBatch({
                         links: []
                     };
 
+                if (username.substr(0, 5) == "acct:") {
+                    username = username.substr(5);
+                }
+
                 if (!rel || rel == "profile") {
                     result.links.push({rel: "profile",
                                        href: "https://localhost/profile/" + username});

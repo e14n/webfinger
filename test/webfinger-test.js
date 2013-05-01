@@ -46,6 +46,10 @@ suite.addBatch({
                     username = parts[0],
                     hostname = parts[1];
 
+                if (username.substr(0, 5) == "acct:") {
+                    username = username.substr(5);
+                }
+
                 res.status(200);
                 res.set("Content-Type", "application/xrd+xml");
                 res.end("<?xml version='1.0' encoding='UTF-8'?>\n"+

@@ -66,6 +66,10 @@ suite.addBatch({
                     username = parts[0],
                     hostname = parts[1];
 
+                if (username.substr(0, 5) == "acct:") {
+                    username = username.substr(5);
+                }
+
                 res.json({
                     links: [
                         {

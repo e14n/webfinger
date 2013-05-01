@@ -46,17 +46,23 @@ suite.addBatch({
                         links: []
                     },
                     type,
-                    types = {
-                        "profile": function(username) {
-                            return "https://localhost/profile/" + username;
-                        },
-                        "avatar": function(username) {
-                            return "https://localhost/avatar/" + username + ".png";
-                        },
-                        "hub": function() {
-                            return "https://localhost/hub";
-                        }
-                    };
+                    types;
+ 
+                if (username.substr(0, 5) == "acct:") {
+                    username = username.substr(5);
+                }
+
+                types = {
+                    "profile": function(username) {
+                        return "https://localhost/profile/" + username;
+                    },
+                    "avatar": function(username) {
+                        return "https://localhost/avatar/" + username + ".png";
+                    },
+                    "hub": function() {
+                        return "https://localhost/hub";
+                    }
+                };
 
                 for (type in types) {
                     if (types.hasOwnProperty(type)) {
