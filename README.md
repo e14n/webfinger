@@ -70,6 +70,21 @@ behaviour. Currently, the options are:
   the .well-known/webfinger endpoint. When this is set, it won't
   use host-meta and LRDD endpoints as a fallback.
 
+### lrdd(address, callback)
+
+Explicitly use Host Metadata + LRDD lookup per RFC 6415 and avoid the
+/.well-known/webfinger endpoint. Use this if you know a host only
+supports LRDD.
+
+### lrdd(address, options, callback)
+
+As above, but with fine control of options. Options include:
+
+* `httpsOnly`: boolean flag, default `false` for whether to only use
+  HTTPS for communicating with the server. When this is set, it won't
+  use Webfinger, host-meta or LRDD endpoints that aren't HTTPS, and won't
+  follow redirect requests to HTTP endpoints.
+
 ### hostmeta(address, callback)
 
 Gets link data for the host at `address` and returns it to function `callback`.
