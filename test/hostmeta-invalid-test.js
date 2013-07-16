@@ -2,7 +2,7 @@
 //
 // Test the module interface
 //
-// Copyright 2012, E14N https://e14n/
+// Copyright 2012-2013 E14N https://e14n/
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@ var assert = require("assert"),
 
 var suite = vows.describe("Test hostmeta for bad domain");
 
-suite.addBatch({
-    "When we get host-meta data for a non-existent domain": {
+var badDomain = function(domain) {
+    return {
         topic: function() {
             var callback = this.callback;
-            wf.hostmeta("non-existent.invalid", function(err, jrd) {
+            wf.hostmeta(domain, function(err, jrd) {
                 if (err) {
                     callback(null);
                 } else {
@@ -38,7 +38,15 @@ suite.addBatch({
         "it works": function(err, jrd) {
             assert.ifError(err);
         }
-    }
+    };
+};
+
+suite.addBatch({
+    "When we get host-meta data for a .invalid domain": badDomain("host-meta.invalid"),
+    "When we get host-meta data for a .example domain": badDomain("host-meta.example"),
+    "When we get host-meta data for example.com": badDomain("example.com"),
+    "When we get host-meta data for example.org": badDomain("example.org"),
+    "When we get host-meta data for example.net": badDomain("example.net")
 });
 
 suite["export"](module);

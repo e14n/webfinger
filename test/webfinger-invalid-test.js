@@ -2,7 +2,7 @@
 //
 // Test webfinger when the domain is invalid
 //
-// Copyright 2012, E14N https://e14n/
+// Copyright 2012-2013 E14N https://e14n.com/
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@ var assert = require("assert"),
 
 var suite = vows.describe("Test webfinger for bad domain");
 
-suite.addBatch({
-    "When we get webfinger data for a user at a non-existent domain": {
+var badDomain = function(domain) {
+    return {
         topic: function() {
             var callback = this.callback;
-            wf.webfinger("user@non-existent.invalid", function(err, jrd) {
+            wf.webfinger("user@"+domain, function(err, jrd) {
                 if (err) {
                     callback(null);
                 } else {
@@ -38,7 +38,15 @@ suite.addBatch({
         "it works": function(err, jrd) {
             assert.ifError(err);
         }
-    }
+    };
+};
+
+suite.addBatch({
+    "When we get webfinger data for a user in a .invalid domain": badDomain("webfinger.invalid"),
+    "When we get webfinger data for a user in a .example domain": badDomain("webfinger.example"),
+    "When we get webfinger data for a user in example.com": badDomain("example.com"),
+    "When we get webfinger data for a user in example.org": badDomain("example.org"),
+    "When we get webfinger data for a user in example.net": badDomain("example.net")
 });
 
 suite["export"](module);
