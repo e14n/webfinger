@@ -31,7 +31,7 @@
     },
 
     "dependencies": {
-        "step": "0.0.x",
+        "step": "^1.0.0",
         "xml2js": "0.1.x"
     },
 
@@ -40,11 +40,6 @@
         "url": "git://github.com/e14n/webfinger.git"
     },
 
-    "licenses": [
-        {
-            "type": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        }
-    ]
+    "license": "Apache-2.0"
 
 }
