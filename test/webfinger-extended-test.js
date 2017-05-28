@@ -58,9 +58,9 @@ suite.addBatch({
                         "<Alias>http://localhost/profile/"+username+"</Alias>\n"+
                         "<Alias>http://localhost/user/1</Alias>\n"+
                         "<Link rel='profile' href='http://localhost/profile/"+username+"' />\n"+
-                        "<Link rel='http://apinamespace.org/atom' type='application/atomsvc+xml'"+
+                        "<Link rel='http://apinamespace.org/atom' type='application/atomsvc+xml' "+
                         "href='http://localhost/app/"+username+".atom'>"+
-                         "<Property type='http://apinamespace.org/atom/username'>"+username+"</Property></Link>"+
+                        "<Property type='http://apinamespace.org/atom/username'>"+username+"</Property></Link>"+
                         "</XRD>");
             });
             app.on("error", function(err) {
