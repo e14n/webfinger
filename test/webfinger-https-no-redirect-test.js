@@ -50,6 +50,8 @@ suite.addBatch({
                     username = parts[0],
                     hostname = parts[1];
 
+                res.setHeader('content-type', 'application/jrd+json');
+
                 res.json({
                     subject: uri,
                     links: [
