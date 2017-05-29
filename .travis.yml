@@ -1,6 +1,9 @@
 language: node_js
+sudo: required
 node_js:
-  - "0.8"
-  - "0.10"
+  - "7"
+  - "6"
+  - "5"
+  - "4"
 script: "sudo /usr/local/bin/node node_modules/.bin/vows -i --spec test/*-test.js"
 
