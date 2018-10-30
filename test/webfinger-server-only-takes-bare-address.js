@@ -46,7 +46,7 @@ suite.addBatch({
                     return;
                 }
 
-                res.setHeader('content-type', 'application/jrd+json');
+                res.setHeader('content-type', 'application/json');
 
                 res.json({
                     subject: uri,

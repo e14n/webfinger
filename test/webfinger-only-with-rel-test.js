@@ -60,7 +60,7 @@ suite.addBatch({
                                        href: "https://localhost/avatar/" + username + ".png"});
                 }
 
-                res.setHeader('content-type', 'application/jrd+json');
+                res.setHeader('content-type', 'application/json');
 
                 res.json(result);
             });
