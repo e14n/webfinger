@@ -73,6 +73,8 @@ suite.addBatch({
                     }
                 }
 
+                res.setHeader('content-type', 'application/json');
+
                 res.json(result);
             });
 

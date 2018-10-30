@@ -26,7 +26,7 @@ var assert = require("assert"),
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-var suite = vows.describe("RFC6415 (host-meta) interface");
+var suite = vows.describe("RFC7033 application/jrd+json content-type works");
 
 suite.addBatch({
     "When we run an HTTPS app that just supports Webfinger": {
@@ -45,7 +45,7 @@ suite.addBatch({
                     username = username.substr(5);
                 }
 
-                res.setHeader('content-type', 'application/json');
+                res.setHeader('content-type', 'application/jrd+json');
 
                 res.json({
                     subject: uri,
@@ -61,7 +61,7 @@ suite.addBatch({
             app.on("error", function(err) {
                 callback(err, null);
             });
-            
+
             opts = {key: fs.readFileSync(path.join(__dirname, "data", "localhost.key")),
                     cert: fs.readFileSync(path.join(__dirname, "data", "localhost.crt"))};
 
@@ -79,7 +79,7 @@ suite.addBatch({
         },
         "and we get a Webfinger": {
             topic: function() {
-                wf.webfinger("acct:alice@localhost", this.callback);
+                wf.webfinger("alice@localhost", this.callback);
             },
             "it works": function(err, jrd) {
                 assert.ifError(err);

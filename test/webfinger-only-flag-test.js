@@ -45,6 +45,8 @@ suite.addBatch({
                     username = username.substr(5);
                 }
 
+                res.setHeader('content-type', 'application/json');
+
                 res.json({
                     subject: uri,
                     links: [
