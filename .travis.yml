@@ -1,9 +1,8 @@
 language: node_js
 sudo: required
 node_js:
-  - "7"
+  - "10"
+  - "8"
   - "6"
-  - "5"
-  - "4"
 script: "sudo $(which node) node_modules/.bin/vows -i --spec test/*-test.js"
 
